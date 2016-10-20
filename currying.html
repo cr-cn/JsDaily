@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript的函数currying柯里化</title>
+</head>
+
+<body>
+    <script>
+    //example 1
+    var concat3Words = function(a, b, c) {
+        return a + b + c;
+    };
+    var concat3WordsCurrying = function(a) {
+        return function(b) {
+            return function(c) {
+                return a + b + c;
+            }
+        }
+    };
+    console.log(concat3Words('a', 'b', 'c'));
+    console.log(concat3WordsCurrying('a'));
+    console.log(concat3WordsCurrying('a')('b')('c')); //函数链式调用
+
+
+    // 基础知识普及之arguments    
+    function f(a, b, c) {
+        console.log(arguments.length);
+        a = 100;
+        console.log(arguments[0]);
+        arguments[0] = 'ray';
+        console.log(a);
+        console.log(c);
+        c = 2016;
+        console.log(arguments[2]);
+    }
+    f(1, 2);
+
+    var a = {
+        length: 2,
+        0: 'first',
+        1: 'second'
+    };
+    // Array.prototype.slice.call(a);
+    [].slice.call(a, 2)
+    console.log(a)
+    </script>
+</body>
+
+</html>
