@@ -70,21 +70,43 @@
 
 
     // 实例5
-    var globalVar = 0;
+    // var globalVar = 0;
 
-    function outerFn() {
-        function innerFn() {
-            globalVar++;
-            console.log('golbalVar = ' + globalVar);
-        }
-        return innerFn;
-    }
-    var fnRef = outerFn();
-    fnRef();
-    fnRef();
-    var fnRef2 = outerFn();
-    fnRef2();
-    fnRef2();
+    // function outerFn() {
+    //     function innerFn() {
+    //         globalVar++;
+    //         console.log('golbalVar = ' + globalVar);
+    //     }
+    //     return innerFn;
+    // }
+    // var fnRef = outerFn();
+    // fnRef();
+    // fnRef();
+    // var fnRef2 = outerFn();
+    // fnRef2();
+    // fnRef2();
+
+
+
+    // 实例6
+    // function outerFn() {
+    //     var outerVar = 0;
+
+    //     function innerFn() {
+    //         outerVar++;
+    //         console.log('outerVar = ' + outerVar);
+    //     }
+    //     return innerFn;
+    // }
+    // var fnRef = outerFn();
+    // fnRef();
+    // fnRef();
+    // var fnRef2 = outerFn();
+    // fnRef2();
+    // fnRef2();
+
+
+    
     </script>
 </body>
 
