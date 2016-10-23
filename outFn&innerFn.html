@@ -69,7 +69,22 @@
     // fnRef2();
 
 
-    
+    // 实例5
+    var globalVar = 0;
+
+    function outerFn() {
+        function innerFn() {
+            globalVar++;
+            console.log('golbalVar = ' + globalVar);
+        }
+        return innerFn;
+    }
+    var fnRef = outerFn();
+    fnRef();
+    fnRef();
+    var fnRef2 = outerFn();
+    fnRef2();
+    fnRef2();
     </script>
 </body>
 
