@@ -106,7 +106,32 @@
     // fnRef2();
 
 
-    
+    // 实例7
+    // function outerFn() {
+    //     var outerVar = 0;
+
+    //     function innerFn1() {
+    //         outerVar++;
+    //         console.log('(1) outerVar = ' + outerVar);
+    //     }
+
+    //     function innerFn2() {
+    //         outerVar += 2;
+    //         console.log('(2) outerVar = ' + outerVar);
+    //     }
+    //     return {
+    //         'fn1': innerFn1,
+    //         'fn2': innerFn2
+    //     };
+    // }
+    // var fnRef = outerFn();
+    // fnRef.fn1(); //1
+    // fnRef.fn2(); //3
+    // fnRef.fn1(); //4
+    // var fnRef2 = outerFn();
+    // fnRef2.fn1();
+    // fnRef2.fn2();
+    // fnRef2.fn1();
     </script>
 </body>
 
