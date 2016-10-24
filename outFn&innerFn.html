@@ -205,23 +205,59 @@
     //实例13
     //还可以使用jQuery的事件系统换个角度来解决这个问题，.on()方法接受一个对象参数-->>
     //该参数以event.data的形式传入事件处理程序中
-    $(document).ready(function() {
-        for (var i = 0; i < 5; i++) {
-            $('<div>Print ' + i + '</div>')
-                .on('click', {
-                    val: i
-                }, function(event) {
-                    console.log(event.data.val);
-                }).insertBefore('#results');
+    // $(document).ready(function() {
+    //     for (var i = 0; i < 5; i++) {
+    //         $('<div>Print ' + i + '</div>')
+    //             .on('click', {
+    //                 val: i
+    //             }, function(event) {
+    //                 console.log(event.data.val);
+    //             }).insertBefore('#results');
 
-        }
-    });
+    //     }
+    // });
+
+
+    //实例14:由于最里面的函数是在.each()回调函数中定义的-->>
+    //因而以上代码实际上创建了同存在的按钮一样多的函数
+    //这些函数分别作为一个单击处理程序被添加给了相应的按钮
+    //而且，由于.each()回调函数拥有参数index-->>
+    //所以在这些函数的封闭环境中都有各自的index变量-->>
+    //这就如同把单击处理程序写成一个命名函数一样
+    // $(document).ready(function() {
+    //     $('input').each(function(index) {
+    //         $(this).click(function(event) {
+    //             event.preventDefault();
+    //             console.log('index = ' + index);
+    //         });
+    //     });
+    // });
+
+
+    // 实例15:在clickHandler()中必须定义这个index变量-->>
+    // 否则index仍然是一个自由变量，在这个环境中没有定义
+    // $(document).ready(function() {
+    //     function clickHandler(event) {
+    //         event.preventDefault();
+    //         var index = $(this).index('input');
+    //         console.log('index = ' + index);
+    //     }
+    //     $('input').each(function(index) {
+    //         $(this).click(clickHandler);
+    //     });
+    // });
+
+    
     </script>
     <a href="" id="button-1">button-1</a>
     <br>
     <a href="" id="button-2">button-2</a>
     <br>
     <div id="results"></div>
+    <input type="button" value="0">
+    <input type="button" value="1">
+    <input type="button" value="2">
+    <input type="button" value="3">
 </body>
 
 </html>
