@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>JavaScript闭包</title>
+    <script src='http://libs.baidu.com/jquery/1.9.1/jquery.min.js'></script>
 </head>
 
 <body>
@@ -132,7 +133,38 @@
     // fnRef2.fn1();
     // fnRef2.fn2();
     // fnRef2.fn1();
+
+
+    // 实例8：在jQuery中创建闭包
+    // $(document).ready(function() {
+    // 	var readyVar = 0;
+    // 	function innerFn(){
+    // 		readyVar++;
+    // 		console.log('readyVar = ' + readyVar);
+    // 	}
+    // 	innerFn();
+    // 	innerFn();
+    // });
+
+
+    // 实例9
+    $(document).ready(function() {
+        var counter = 0;
+        $('#button-1').on('click', function(event) {
+            event.preventDefault();
+            counter++;
+            console.log('counter = ' + counter);
+        });
+        $('#button-2').on('click', function(event) {
+            event.preventDefault();
+            counter--;
+            console.log('counter = ' + counter);
+        });
+    });
     </script>
+    <a href="" id="button-1">button-1</a>
+    <br>
+    <a href="" id="button-2">button-2</a>
 </body>
 
 </html>
