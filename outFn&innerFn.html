@@ -148,23 +148,80 @@
 
 
     // 实例9
+    // $(document).ready(function() {
+    //     var counter = 0;
+    //     $('#button-1').on('click', function(event) {
+    //         event.preventDefault();
+    //         counter++;
+    //         console.log('counter = ' + counter);
+    //     });
+    //     $('#button-2').on('click', function(event) {
+    //         event.preventDefault();
+    //         counter--;
+    //         console.log('counter = ' + counter);
+    //     });
+    // });
+
+
+    // 实例10:单击页面中的任何一个元素都会显示数值5，即使在绑定处理程序时i的值每次都不一样-->>
+    // 每个click处理程序最终引用的i都相同，都等于单击事件实际发生时i的最终值5
+    // $(document).ready(function() {
+    //     for (var i = 0; i < 5; i++) {
+    //         $('<div>Print ' + i + '</div>')
+    //             .on('click', function() {
+    //                 console.log(i);
+    //             }).insertBefore('#results');
+    //     }
+    // });
+
+
+    //实例11:针对实例10的改进，使每次循环的val实际上都是不同的变量-->>
+    //每个click处理程序都指向一个不同的val变量，因而每次单击输出的值会与元素的标签文本匹配
+    // $(document).ready(function() {
+    //     $.each([0, 1, 2, 3, 4], function(index, val) {
+    //         $('<div>Print ' + val + '</div>')
+    //             .click(function() {
+    //                 console.log(val);
+    //             }).insertBefore('#results');
+    //     });
+    // });
+
+    //实例12:在for循环内部，可以定义并执行一个新函数，让它负责把变量i的值分配到不同的变量中去-->>
+    //立即调用的函数表达式(IIFE)，前面曾在调用$.noConflict()之后利用它为jQuery对象重新定义别名$-->>
+    //在这里，我们利用它将i传给变量val，以便val在每个单击处理程序中都有不同的值
+    // $(document).ready(function() {
+    //     for (var i = 0; i < 5; i++) {
+    //         (function(val) {
+    //             $('<div>Print ' + val + '</div>')
+    //                 .on('click', function() {
+    //                     console.log(val);
+    //                 }).insertBefore('#results');
+    //         })(i);
+
+    //     }
+    // });
+
+
+    //实例13
+    //还可以使用jQuery的事件系统换个角度来解决这个问题，.on()方法接受一个对象参数-->>
+    //该参数以event.data的形式传入事件处理程序中
     $(document).ready(function() {
-        var counter = 0;
-        $('#button-1').on('click', function(event) {
-            event.preventDefault();
-            counter++;
-            console.log('counter = ' + counter);
-        });
-        $('#button-2').on('click', function(event) {
-            event.preventDefault();
-            counter--;
-            console.log('counter = ' + counter);
-        });
+        for (var i = 0; i < 5; i++) {
+            $('<div>Print ' + i + '</div>')
+                .on('click', {
+                    val: i
+                }, function(event) {
+                    console.log(event.data.val);
+                }).insertBefore('#results');
+
+        }
     });
     </script>
     <a href="" id="button-1">button-1</a>
     <br>
     <a href="" id="button-2">button-2</a>
+    <br>
+    <div id="results"></div>
 </body>
 
 </html>
