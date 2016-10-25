@@ -247,7 +247,46 @@
     //     });
     // });
 
-    
+
+    //实例15:避免意外的引用循环
+
+    //实例16:控制DOM与JavaScript的循环
+
+    // 当指定单击事件处理程序时，就创建了一个在其封闭的环境中包含button变量的闭包-->>
+    // 而且现在的button也包含一个指向闭包(onclick属性自身)的引用-->>
+    // 这样就导致了在IE中即使离开当前页面也不会释放这个循环的情况-->>
+    // 为了释放内存，就需要断开这个循环引用-->
+    // 例如在关闭窗口前删除onclick属性
+    // $(document).ready(function() {
+    //     var button = document.getElementById('button-1');
+    //     button.onclick = function() {
+    //         console.log('hello');
+    //         return false;
+    //     }
+    // });
+
+
+    //实例17:针对实例16的改进
+    // function hello() {
+    //     console.log('hello');
+    //     return false;
+    // }
+    // $(document).ready(function() {
+    //     var button = document.getElementById('button-1');
+    //     button.onclick = hello;
+    // });
+
+
+
+
+    // 实例18：针对实例16的改进2
+    // $(document).ready(function() {
+    //     var $button = $('#button-1');
+    //     $button.click(function(event) {
+    //         event.preventDefault();
+    //         console.log('hello');
+    //     })
+    // });
     </script>
     <a href="" id="button-1">button-1</a>
     <br>
