@@ -35,6 +35,12 @@
     new foo.getName();
     new foo().getName();
     new new foo().getName();
+
+
+    // 第一问的foo.getName自然访问了foo函数上存储的静态属性，答案是2
+    // 第二问直接调用getName函数，既然是直接调用那么就是访问当前上文作用域内的叫getName的函数-->>
+    // 所以跟1、2、3都没有关系，此处两个坑一是变量声明提升，二是函数表达式-->>
+    // 所以最终函数声明的赋值再次覆盖了function getName的声明
     </script>
 </body>
 
