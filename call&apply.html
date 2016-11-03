@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>call and apply</title>
+</head>
+
+<body>
+    <script>
+    //通过call apply 函数将execFunc的this值指向testInstance对象的this值
+    //以func.apply()(or call)为例call apply的第一个参数是func函数运行时的this值
+    //call apply区别？？？
+    function testFunc(val) {
+        this.a = val;
+        this.b = 'bb';
+    }
+
+    function execFunc() {
+        var a = 'exec aa';
+        var b = 'exec bb';
+
+        console.log(this.a, this.b);
+    }
+    var testInstance = new testFunc('aa');
+
+    execFunc.call(testInstance);
+    execFunc.apply(testInstance);
+    </script>
+</body>
+
+</html>
