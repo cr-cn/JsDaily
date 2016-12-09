@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>通用的柯里化函数</title>
+</head>
+
+<body>
+    <script>
+    var currying = function(fn) {
+        var _args = [];
+        return function() {
+            if (arguments.length === 0) {
+                return fn.apply(this._args);
+            }
+            Array.prototype.push.apply(_args, [].slice.call(arguments));
+            return arguments.callee;
+        }
+    }
+    var multi = function() {
+        var total = 0;
+        for (var i = 0, c; c = arguments[i++];) {
+            total += c;
+        }
+        return total;
+    };
+    var sum = currying(multi);
+
+    sum(100, 200)(300);
+    sum(400);
+    console.log(sum());
+    </script>
+</body>
+
+</html>
