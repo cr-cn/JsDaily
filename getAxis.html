@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>获取鼠标的x,y坐标</title>
+    <script src='http://libs.baidu.com/jquery/1.11.3/jquery.min.js'></script>
+</head>
+
+<body>
+    <div id="xy"></div>
+    <script>
+    $(function() {
+        $(this).mousemove(function(event) {
+            $('#xy').html('x:' + event.pageX + 'y:' + event.pageY);
+        });
+    });
+    </script>
+</body>
+
+</html>
