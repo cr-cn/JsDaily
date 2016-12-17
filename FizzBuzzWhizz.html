@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FizzBuzzWhizz</title>
+    <script src='http://libs.baidu.com/jquery/1.11.3/jquery.min.js'></script>
+</head>
+
+<body>
+    <input type="text" id="shuzhi">
+    <input type="button" value="计算" id="button">
+    <div id="result"></div>
+    <script>
+    var bijiao = function(a, b, c) {
+        return a % b === 0 ? c : '';
+    }
+    var jieguo = function(a, b, c, d) {
+        for (var i = 1; i <= d; i++) {
+            var s = bijiao(i, a, 'Fizz') + bijiao(i, b, 'Buzz') + bijiao(i, c, 'Whizz');
+            var r = (i + '').indexOf(a) !== -1 ? 'Fizz' : s !== '' ? s : i;
+        }
+        document.getElementById('result').innerHTML = r;
+    }
+    $('#button').click(function() {
+        jieguo(3, 5, 7, $('#result').val());
+    })
+    </script>
+</body>
+
+</html>
