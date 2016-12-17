@@ -13,17 +13,21 @@
     <div id="result"></div>
     <script>
     var bijiao = function(a, b, c) {
+        //a对象,b除数,c结果
         return a % b === 0 ? c : '';
     }
     var jieguo = function(a, b, c, d) {
+        var jieguo = '';
         for (var i = 1; i <= d; i++) {
             var s = bijiao(i, a, 'Fizz') + bijiao(i, b, 'Buzz') + bijiao(i, c, 'Whizz');
             var r = (i + '').indexOf(a) !== -1 ? 'Fizz' : s !== '' ? s : i;
+            jieguo += r + '<br/>';
         }
-        document.getElementById('result').innerHTML = r;
+        document.getElementById('result').innerHTML = jieguo;
     }
     $('#button').click(function() {
-        jieguo(3, 5, 7, $('#result').val());
+        console.log($('#shuzhi').val());
+        jieguo(2, 3, 4, $('#shuzhi').val());
     })
     </script>
 </body>
