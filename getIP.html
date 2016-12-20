@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>获取客户端IP</title>
+</head>
+
+<body>
+    <script>
+    var url = 'http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_=' + Math.random();
+    $.getJSON(url, function(json, textStatus) {
+        console.log(json.Ip);
+    });
+    </script>
+    <script src='http://libs.baidu.com/jquery/1.11.3/jquery.min.js'></script>
+</body>
+
+</html>
